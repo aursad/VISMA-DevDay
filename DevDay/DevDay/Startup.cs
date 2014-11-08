@@ -1,5 +1,7 @@
-﻿using Owin;
+﻿using Microsoft.Owin;
+using Owin;
 
+[assembly: OwinStartup(typeof(DevDay.Startup))]
 namespace DevDay
 {
     public class Startup
