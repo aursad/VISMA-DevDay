@@ -1,16 +1,16 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using DevDay.Repository;
 
 namespace DevDay.Controllers.Api
 {
     public class RetroGameController : ApiController
     {
-        private readonly IRetroRepository _retroRepository;
-
-        public RetroGameController()
-        {
-            _retroRepository = new RetroRepository();
-        }
+        private IRetroRepository _retroRepository;
 
         public RetroGameController(IRetroRepository retroRepository)
         {

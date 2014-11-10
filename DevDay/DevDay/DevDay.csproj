@@ -41,6 +41,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.1.1\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -72,6 +78,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -148,12 +159,19 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RetroHub.cs" />
     <Compile Include="Controllers\RetroController.cs" />
+    <Compile Include="DAL\DevDayContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AngularTemplate.cs" />
     <Compile Include="Infrastructure\HtmlHelperExtensions.cs" />
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\RetroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\IRetroRepository.cs" />
+    <Compile Include="Repository\RetroRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +204,22 @@
     <Content Include="Content\scripts\angular-mocks.js" />
     <Content Include="Content\scripts\bootstrap.js" />
     <Content Include="Content\scripts\bootstrap.min.js" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\msvcr90.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
     <None Include="Content\scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Content\scripts\ie10-viewport-bug-workaround.js" />
     <Content Include="Content\scripts\jquery-2.1.1.js" />
@@ -207,13 +241,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Retro\Index.cshtml" />
     <Content Include="Views\Retro\Game\Join.cshtml" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
