@@ -146,7 +146,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Api\RetroGameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Hubs\RetroHub.cs" />
+    <Compile Include="Controllers\RetroHub.cs" />
     <Compile Include="Controllers\RetroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -158,11 +158,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\app\retro\config.js" />
+    <Content Include="Content\app\retro\module.js" />
+    <Content Include="Content\app\retro\retro-game-controller.js" />
+    <Content Include="Content\app\retro\retro-game-service.js" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\dev-day.css" />
+    <Content Include="Content\scripts\angular-ui\angular-ui-router.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -170,9 +175,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
-    <Content Include="Content\scripts\angular.js" />
-    <Content Include="Content\scripts\angular.min.js" />
-    <Content Include="Content\scripts\angular.min.js.map" />
+    <Content Include="Content\scripts\angular\angular.js" />
+    <Content Include="Content\scripts\angular\angular.min.js" />
+    <Content Include="Content\scripts\angular\angular.min.js.map" />
     <Content Include="Content\scripts\angular-mocks.js" />
     <Content Include="Content\scripts\bootstrap.js" />
     <Content Include="Content\scripts\bootstrap.min.js" />

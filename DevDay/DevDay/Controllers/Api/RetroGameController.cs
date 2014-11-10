@@ -11,7 +11,23 @@ namespace DevDay.Controllers.Api
     {
         public IHttpActionResult Get()
         {
-            return Ok(new[] {"test", "test2"});
+            var online = new List<Member>
+            {
+                new Member
+                {
+                    Name = "Petras"
+                },
+                new Member
+                {
+                    Name = "Jonas"
+                }
+            };
+            return Ok(online);
         }
+    }
+
+    class Member
+    {
+        public string Name { get; set; }
     }
 }

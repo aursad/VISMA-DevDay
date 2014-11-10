@@ -6,9 +6,15 @@ namespace DevDay.Controllers.Hubs
     [HubName("RetroHub")]
     public class RetroHub : Hub
     {
+
         public void NotifyUpdated(int retroId)
         {
             Clients.All.BoardUpdated();
+        }
+
+        public void JoinGame()
+        {
+            Clients.All.NewMember();
         }
 
     }
