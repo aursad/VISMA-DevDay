@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevDay - @ViewBag.Title</title>
+    <base href="/" />
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/css/dev-day.css" rel="stylesheet" type="text/css" />
 </head>
@@ -41,7 +42,11 @@
     <script src="~/Content/scripts/ie10-viewport-bug-workaround.js"></script>
     
     <script src="~/Content/app/retro/module.js"></script>
-    <script src="~/Content/app/retro/retro-game-service.js"></script>
+    <script src="~/Content/app/common/module.js"></script>
+    <script src="~/Content/app/retro/config.js"></script>
+    <script src="~/Content/app/common/spa-route-service.js"></script>
+    <script src="~/Content/app/retro/retro-hub-service.js"></script>
     <script src="~/Content/app/retro/retro-game-controller.js"></script>
+    <script src="~/Content/app/retro/retro-game-join-controller.js"></script>
 </body>
 </html>

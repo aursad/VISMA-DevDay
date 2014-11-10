@@ -2,5 +2,6 @@
 
 (function (ng) {
     'use strict';
-    ng.module('devday.retro', []);
+    ng.module('devday.retro', [
+        'ui.router', 'common']);
 })(angular)

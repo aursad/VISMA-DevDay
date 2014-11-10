@@ -12,7 +12,7 @@ namespace DevDay.Controllers.Hubs
             Clients.All.BoardUpdated();
         }
 
-        public void JoinGame()
+        public void JoinGame(string name)
         {
             Clients.All.NewMember();
         }

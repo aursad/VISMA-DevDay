@@ -1,0 +1,18 @@
+﻿@using DevDay.Infrastructure
+@using (Html.AngularTemplate("game-join-template"))
+{
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-signin" role="form">
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <input type="text" class="form-control" placeholder="Name" data-ng-model="name" required autofocus>
+                    <br />
+                    <div class="btn-group">
+                        <button class="btn btn-lg btn-primary btn-block" data-ng-click="joinGame()" type="submit">Create new game</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

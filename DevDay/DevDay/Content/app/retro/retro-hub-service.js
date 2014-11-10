@@ -1,16 +1,8 @@
 ﻿(function(ng) {
     'use strict';
 
-    ng.module('devday.retro').service('retroService', function($http, $q, $rootScope) {
+    ng.module('devday.retro').service('hubService', function($http, $q, $rootScope) {
         var proxy = null;
-
-        var get = function() {
-            return $http.get("/api/RetroGame").then(function(response) {
-                return response.data;
-            }, function(error) {
-                return $q.reject(error.data.Message);
-            });
-        };
 
         var initialize = function() {
 
@@ -48,8 +40,7 @@
         return {
             initialize: initialize,
             sendRequest: sendRequest,
-            Join: joinedGame,
-            getTest: get
+            Join: joinedGame
         };
     });
 })(angular)

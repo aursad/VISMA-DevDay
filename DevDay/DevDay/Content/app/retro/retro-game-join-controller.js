@@ -2,33 +2,31 @@
 (function (ng) {
     'use strict';
 
-    ng.module('devday.retro').controller('boardCtrl', function ($scope, hubService) {
+    ng.module('devday.retro').controller('joinGameCtrl', function ($scope, $state, hubService) {
         // Model
         $scope.columns = [];
         $scope.onLine = [];
         $scope.isLoading = false;
+        $scope.test = "aaa";
 
         function init() {
             $scope.isLoading = true;
             hubService.initialize().then(function (data) {
                 $scope.isLoading = false;
-                $scope.refreshOnlineList();
+                hubService.Join($scope.name);
             }, onError);
+        };
+
+        $scope.joinGame = function() {
+            console.log($scope.name);
+            init();
+            $state.go("retro-game");
         };
 
         $scope.refreshOnlineList = function refreshOnlineList() {
             $scope.isLoading = true;
             hubService.getTest().then(function (success) {
                 $scope.onLine = success;
-            });
-        };
-
-        $scope.refreshBoard = function refreshBoard() {
-            $scope.isLoading = true;
-            hubService.getTest(function (success) {
-                $scope.isLoading = false;
-                $scope.columns = success;
-                console.log(success);
             });
         };
 
@@ -42,6 +40,5 @@
             $scope.isLoading = false;
             //toastr.error(errorMessage, "Error");
         };
-
     });
 })(angular)

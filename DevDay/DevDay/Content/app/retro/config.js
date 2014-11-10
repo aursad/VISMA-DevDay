@@ -5,16 +5,15 @@
 
     'use strict';
     ng.module('devday.retro')
-    .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', 'interceptionProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, interceptionProvider) {
+    .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
         $locationProvider.html5Mode(true);
 
-        interceptionProvider.setInterceptors($httpProvider);
 
         $urlRouterProvider.otherwise(function ($injector) {
             $injector.invoke([
                 'spaRouteService', function (spaRouteService) {
-                    spaRouteService.route({ defaultPath: '/administration/employee' });
+                    spaRouteService.route({ defaultPath: '/retro' });
                 }
             ]);
         });
@@ -27,12 +26,21 @@
         });
 
         $stateProvider
-            .state("employee", {
-                url: "/administration/employee",
-                //"abstract": true,
-                //templateUrl: "sidebar"
-                template: "<div ui-view></div>"
+            .state("retro", {
+                url: "/retro",
+                templateUrl: "game-join-template",
+                controller: "joinGameCtrl"
             })
+            .state("retro-join", {
+                url: "/retro/join",
+                controller: "joinGameCtrl",
+                templateUrl: "game-join-template"
+            })
+            .state('retro-game', {
+                url: '/retro/game',
+                controller: "boardCtrl",
+                templateUrl: "game-template"
+            });
     }]);
 
 })(angular)

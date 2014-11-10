@@ -151,6 +151,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AngularTemplate.cs" />
+    <Compile Include="Infrastructure\HtmlHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -158,21 +160,24 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\app\common\module.js" />
     <Content Include="Content\app\retro\config.js" />
     <Content Include="Content\app\retro\module.js" />
+    <Content Include="Content\app\retro\retro-game-join-controller.js" />
     <Content Include="Content\app\retro\retro-game-controller.js" />
-    <Content Include="Content\app\retro\retro-game-service.js" />
+    <Content Include="Content\app\retro\retro-hub-service.js" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\dev-day.css" />
     <Content Include="Content\scripts\angular-ui\angular-ui-router.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\app\common\spa-route-service.js" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\scripts\angular\angular.js" />
@@ -197,9 +202,11 @@
     <Content Include="Views\Web.config" />
     <Content Include="Content\scripts\jquery-2.1.1.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Retro\Index.cshtml" />
+    <Content Include="Views\Retro\Game\Game.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Retro\Index.cshtml" />
+    <Content Include="Views\Retro\Game\Join.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
