@@ -171,23 +171,6 @@
     <Compile Include="Infrastructure\AngularTemplate.cs" />
     <Compile Include="Infrastructure\FormattedDbEntityValidationException.cs" />
     <Compile Include="Infrastructure\HtmlHelperExtensions.cs" />
-    <Compile Include="Migrations\201411111445182_InitialCreate.cs" />
-    <Compile Include="Migrations\201411111445182_InitialCreate.Designer.cs">
-      <DependentUpon>201411111445182_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411111459585_1Mi.cs" />
-    <Compile Include="Migrations\201411111459585_1Mi.Designer.cs">
-      <DependentUpon>201411111459585_1Mi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411111507006_1Mi2.cs" />
-    <Compile Include="Migrations\201411111507006_1Mi2.Designer.cs">
-      <DependentUpon>201411111507006_1Mi2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411111512264_1Mi3.cs" />
-    <Compile Include="Migrations\201411111512264_1Mi3.Designer.cs">
-      <DependentUpon>201411111512264_1Mi3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\EFModule.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -270,20 +253,6 @@
       <Project>{793cba3f-c669-4d65-b64c-a03ee1f6fe24}</Project>
       <Name>DevDay.Service</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411111445182_InitialCreate.resx">
-      <DependentUpon>201411111445182_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411111459585_1Mi.resx">
-      <DependentUpon>201411111459585_1Mi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411111507006_1Mi2.resx">
-      <DependentUpon>201411111507006_1Mi2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411111512264_1Mi3.resx">
-      <DependentUpon>201411111512264_1Mi3.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

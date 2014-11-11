@@ -12,17 +12,23 @@ namespace DevDay.DAL.Mapping
     {
         public RetroMap()
         {
-            //Key  
+            // PK
             HasKey(t => t.Id);
-            HasKey(t => t.IdRetro);
 
-            //Fields  
+            // Properties
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(t => t.IdRetro).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-            Property(t => t.IdPerson).IsOptional();
+            Property(t => t.PersonId).IsRequired();
+            Property(t => t.Name).IsRequired();
+            Property(t => t.CreateTime).IsRequired();
+            Property(t => t.RetroType).IsRequired();
 
-            //table  
-            ToTable("Retros");  
+            // Table and column Mappings
+            ToTable("Retros");
+            Property(t => t.Id).HasColumnName("ID");
+
+
+            // Relationships
+            HasRequired(t => t.Person).WithMany().HasForeignKey(d => d.PersonId).WillCascadeOnDelete(false);
         }
     }
 }

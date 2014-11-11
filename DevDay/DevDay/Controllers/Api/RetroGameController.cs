@@ -29,19 +29,16 @@ namespace DevDay.Controllers.Api
         {
             var person = new PersonEntity
             {
-                IdPerson = Guid.NewGuid(),
                 Name = "Aurimas"
             };
-            var retroEntity = new RetroEntity
+            var retro = new RetroEntity
             {
-                IdRetro = Guid.NewGuid(),
+                CreateTime = DateTime.Now,
+                RetroType = RetroTypeEnum.WriteMode,
                 Person = person,
-                IdPerson = person.IdPerson
+                Name = "Demo"
             };
-            person.IdRetro = retroEntity.IdRetro;
-            person.Retro = retroEntity;
-
-            _retroService.Create(retroEntity);
+            _retroService.Create(retro);
             return Ok();
         }
     }

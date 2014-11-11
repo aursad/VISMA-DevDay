@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using DevDay.Model;
 using DevDay.Model.Common;
 
 namespace DevDay.Model
@@ -12,13 +10,24 @@ namespace DevDay.Model
     {
         public RetroEntity()
         {
-            MessagesList = new List<MessageEntity>();
+            Messages = new List<MessageEntity>();
         }
+        // Foreign key 
+        public int PersonId { get; set; }
 
-        public Guid IdRetro { get; set; }
-        public Guid? IdPerson { get; set; }
+        //Properties
+        public string Name { get; set; }
+        public DateTime CreateTime { get; set; }
+        public RetroTypeEnum RetroType { get; set; }
 
-        public PersonEntity Person { get; set; }
-        public ICollection<MessageEntity> MessagesList { get; set; }
+        //Navigation property
+        public virtual PersonEntity Person { get; set; }
+        public virtual ICollection<MessageEntity> Messages { get; set; }
+    }
+
+    public enum RetroTypeEnum
+    {
+        WriteMode = 0,
+        ReadMode = 1
     }
 }

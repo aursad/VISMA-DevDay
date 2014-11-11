@@ -12,21 +12,16 @@ namespace DevDay.DAL.Mapping
     {
         public PersonMap()
         {
-            //Key  
+            // PK
             HasKey(t => t.Id);
-            HasKey(t => t.IdPerson);
 
-            //Fields  
+            // Properties
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(t => t.IdMessage).IsOptional();
-            Property(t => t.IdPerson).IsRequired();
+            Property(t => t.Name).IsRequired().HasMaxLength(55);
 
-            //table  
+            // Table and column Mappings
             ToTable("Persons");
-
-            //relationship  
-            HasRequired(t => t.Retro).WithRequiredDependent(u => u.Person);
-            HasRequired(t => t.Messages).WithOptional(u => u.); 
+            Property(t => t.Id).HasColumnName("ID");
         }
     }
 }

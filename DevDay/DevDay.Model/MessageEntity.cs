@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using DevDay.Model.Common;
 
@@ -8,19 +7,18 @@ namespace DevDay.Model
     [Table("Messages")]
     public class MessageEntity : Entity<int>
     {
-        public MessageEntity()
-        {
+        // Foreign key 
+        public int PersonId { get; set; }
+        public int RetroId { get; set; }
 
-        }
-
-        public Guid IdMessage { get; set; }
-        public Guid IdPerson { get; set; }
-        public Guid IdRetro { get; set; }
+        //Properties
+        public DateTime CreateTime { get; set; }
         public string Message { get; set; }
-        public DateTime Date { get; set; }
-        public int MessageType { get; set; }
+        public bool? IsRead { get; set; }
 
-        public virtual PersonEntity Person { get; set; }
+        //Navigation property
         public virtual RetroEntity Retro { get; set; }
+        public virtual PersonEntity Person { get; set; }
     }
+
 }

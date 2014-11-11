@@ -8,25 +8,25 @@ namespace DevDay.DAL.Mapping
     {
         public MessageMap()
         {
-            //Key  
+            // PK
             HasKey(t => t.Id);
 
-            //Fields  
+            // Properties
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(t => t.PersonId).IsRequired();
+            Property(t => t.RetroId).IsRequired();
+            Property(t => t.CreateTime).IsRequired();
             Property(t => t.Message).IsRequired().HasMaxLength(255);
-            Property(t => t.MessageType).IsOptional();
-            Property(t => t.IdPerson).IsRequired();
-            Property(t => t.IdMessage).IsOptional();
-            Property(t => t.Date);
+            Property(t => t.IsRead).IsOptional();
 
-            //table  
+            // Table and column Mappings
             ToTable("Messages");
+            Property(t => t.Id).HasColumnName("ID");
 
-            //relationship  
-            HasRequired(t => t.Retro).WithMany(c => c.MessagesList).HasForeignKey
-                   (t => t.IdRetro).WillCascadeOnDelete(false);
-            HasRequired(t => t.Person).WithMany(c => c.Messages).HasForeignKey
-                   (t => t.IdPerson).WillCascadeOnDelete(false);  
+
+            // Relationships
+            HasRequired(x => x.Retro).WithMany(x => x.Messages).HasForeignKey(x => x.RetroId);
+            HasRequired(t => t.Person).WithMany().HasForeignKey(d => d.PersonId).WillCascadeOnDelete(false);
         }
     }
 }

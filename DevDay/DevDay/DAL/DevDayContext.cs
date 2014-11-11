@@ -12,9 +12,11 @@ namespace DevDay.DAL
 {
     public class DevDayContext : DbContext
     {
-        public DevDayContext() : base("Name=SampleArchContext")
+        public DevDayContext()
+            : base("DevDayContext")
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<DevDayContext>());
+            Configuration.ProxyCreationEnabled = false; 
+            Database.SetInitializer(new DropCreateDatabaseAlways<DevDayContext>());
         }
 
         public DbSet<RetroEntity> Retros { get; set; }
