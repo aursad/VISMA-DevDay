@@ -1,43 +1,51 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using DevDay.Models;
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.Validation;
+using System.Linq;
+using System.Reflection;
+using DevDay.Infrastructure;
+using DevDay.Model;
 
 namespace DevDay.DAL
 {
     public class DevDayContext : DbContext
     {
-        public DevDayContext()
-            : base("DevDayDB")
+        public DevDayContext() : base("Name=SampleArchContext")
         {
-            //Database.SetInitializer(new CreateDatabaseIfNotExists<DevDayContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<DevDayContext>());
         }
 
-        public DbSet<RetroModel> Retros { get; set; }
-        public DbSet<PersonModel> Persons { get; set; }
-        public DbSet<MessageModel> Messages { get; set; }
+        public DbSet<RetroEntity> Retros { get; set; }
+        public DbSet<PersonEntity> Persons { get; set; }
+        public DbSet<MessageEntity> Messages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PersonModel>()
-                .HasKey(e => e.IdPerson);
-            modelBuilder.Entity<PersonModel>()
-                        .Property(e => e.IdPerson)
-                        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-            modelBuilder.Entity<PersonModel>()
-                        .HasRequired(e => e.Retro)
-                        .WithRequiredDependent(s => s.Person);
-
-            modelBuilder.Entity<MessageModel>()
-                        .HasKey(e => e.IdMessage);
-            modelBuilder.Entity<MessageModel>()
-                        .Property(e => e.IdMessage)
-                        .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
-            //one-to-many 
-            modelBuilder.Entity<MessageModel>().HasRequired<RetroModel>(s => s.Retro)
-            .WithMany(s => s.MessagesList).HasForeignKey(s => s.IdRetro);
-
+            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
+           .Where(type => !String.IsNullOrEmpty(type.Namespace))
+           .Where(type => type.BaseType != null && type.BaseType.IsGenericType
+                && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
+            foreach (var type in typesToRegister)
+            {
+                dynamic configurationInstance = Activator.CreateInstance(type);
+                modelBuilder.Configurations.Add(configurationInstance);
+            }
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges()
+        {
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                var newException = new FormattedDbEntityValidationException(e);
+                throw newException;
+            }
         }
     }
 }

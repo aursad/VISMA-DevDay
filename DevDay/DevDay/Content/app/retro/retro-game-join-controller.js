@@ -2,12 +2,8 @@
 (function (ng) {
     'use strict';
 
-    ng.module('devday.retro').controller('joinGameCtrl', function ($scope, $state, hubService) {
-        // Model
-        $scope.columns = [];
-        $scope.onLine = [];
+    ng.module('devday.retro').controller('joinGameCtrl', function ($scope, $state, hubService, retroGame) {
         $scope.isLoading = false;
-        $scope.test = "aaa";
 
         function init() {
             $scope.isLoading = true;
@@ -19,22 +15,11 @@
 
         $scope.joinGame = function() {
             console.log($scope.name);
-            init();
+            retroGame.save({}, $scope.name, function(success) {
+                console.log("Hub id: " + success);
+            });
             $state.go("retro-game");
         };
-
-        $scope.refreshOnlineList = function refreshOnlineList() {
-            $scope.isLoading = true;
-            hubService.getTest().then(function (success) {
-                $scope.onLine = success;
-            });
-        };
-
-        // Listen to the 'refreshBoard' event and refresh the board as a result
-        $scope.$parent.$on("refreshBoard", function (e) {
-            $scope.refreshBoard();
-            //toastr.success("Board updated successfully", "Success");
-        });
 
         var onError = function (errorMessage) {
             $scope.isLoading = false;
