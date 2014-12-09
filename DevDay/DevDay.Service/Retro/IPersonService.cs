@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DevDay.Model;
 
 namespace DevDay.Service.Retro
@@ -7,5 +8,6 @@ namespace DevDay.Service.Retro
     {
         PersonEntity GetSingle(int id);
         IEnumerable<PersonEntity> FindAll();
+        IEnumerable<PersonEntity> GetRetroPersons(Guid idRetro);
     }
 }

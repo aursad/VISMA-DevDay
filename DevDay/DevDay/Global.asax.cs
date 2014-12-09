@@ -1,6 +1,9 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -21,6 +24,8 @@ namespace DevDay
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
 
@@ -40,6 +45,23 @@ namespace DevDay
 
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+        }
+
+        protected void Application_Error(Object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            HttpException httpException = ex as HttpException;
+
+            if (ex != null)
+            {
+                int errorCode = httpException.GetHttpCode();
+
+                if (errorCode == 404)
+                {
+
+                    Response.Redirect("~/");
+                }
+            }
         }
     }
 }

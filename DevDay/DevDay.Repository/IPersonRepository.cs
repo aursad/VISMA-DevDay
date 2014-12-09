@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DevDay.Model;
 using DevDay.Repository.Common;
 
@@ -8,5 +9,6 @@ namespace DevDay.Repository
     {
         IEnumerable<PersonEntity> Get();
         PersonEntity GetSingle(int personId);
+        IEnumerable<PersonEntity> GetAllByRetro(Guid retroId);
     }
 }

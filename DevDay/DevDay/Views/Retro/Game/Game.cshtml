@@ -4,23 +4,38 @@
     <div class="row">
         <div class="col-md-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Controling</div>
+                <div class="panel-heading"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings</div>
                 <div class="panel-body">
                     <ul class="nav nav-pills nav-stacked" role="tablist">
-                        <li role="presentation" class="active"><a href="#">Home</a></li>
-                        <li role="presentation"><a href="#">Profile</a></li>
-                        <li role="presentation"><a href="#">Messages</a></li>
+                        <li><button class="btn btn-primary btn-block">R/W mode</button></li>
+                        <li><button class="btn btn-primary btn-block">Export</button></li>
+                        <li><button class="btn btn-danger btn-block">Delete game</button></li>
                     </ul>
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">Online</div>
+                <div class="panel-heading"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Online</div>
                 <div class="panel-body">
-                    <ul>
-                        <li data-ng-repeat="member in onLine">
-                            {{member.name}}
-                        </li>
-                    </ul>
+                    <p data-ng-repeat="member in onLine">
+                        {{member.name}}<br />
+                    </p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading"> <span class="glyphicon glyphicon-share" aria-hidden="true"></span> Retro share</div>
+                <div class="panel-body">
+                    <address>
+                        <strong>Urls:</strong><br>
+                            <div class="input-group">
+                                <input type="text" value="http://localhost:56520/retro/{{retroId}}" class="form-control" readonly="readonly">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </span>
+                            </div>
+                        <samp>
+                            
+                        </samp>
+                    </address>
                 </div>
             </div>
         </div>
@@ -29,14 +44,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="pull-right">
-                            <button type="button" class="btn btn-primary btn-xs">
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
                                 <span class="glyphicon glyphicon-plus"></span> Add new
                             </button>
                         </div>
                         <h4 class="panel-title">Start Doing</h4>
                     </div>
                     <div class="panel-body">
-                        Panel content
+                        <a data-ng-repeat="message in messages.start">
+                            {{message.message}} ({{message.personId}})
+                        </a>
                     </div>
                 </div>
             </div>
@@ -45,13 +62,15 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             Stop Doing
-                            <button type="button" class="btn btn-primary btn-xs pull-right">
+                            <button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myModal">
                                 <span class="glyphicon glyphicon-plus"></span> Add new
                             </button>
                         </h3>
                     </div>
                     <div class="panel-body">
-                        Panel content
+                        <a data-ng-repeat="message in messages.stop">
+                            {{message.message}} ({{message.personId}})
+                        </a>
                     </div>
                 </div>
             </div>
@@ -60,16 +79,21 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">
                             Continious Doing
-                            <button type="button" class="btn btn-primary btn-xs pull-right">
+                            <button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myModal">
                                 <span class="glyphicon glyphicon-plus"></span> Add new
                             </button>
                         </h3>
                     </div>
                     <div class="panel-body">
-                        Panel content
+                        <a data-ng-repeat="message in messages.continue">
+                            {{message.message}} ({{message.personId}})
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @Html.Partial("Game/Modal/AddStart")
 }

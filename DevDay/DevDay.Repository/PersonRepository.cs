@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DevDay.Model;
@@ -22,6 +23,11 @@ namespace DevDay.Repository
         public PersonEntity GetSingle(int retroId)
         {
             return _dbset.FirstOrDefault(x => x.Id == retroId);
+        }
+
+        public IEnumerable<PersonEntity> GetAllByRetro(Guid retroId)
+        {
+            return _entities.Set<PersonEntity>().AsEnumerable().Where(q => q.RetroGuid == retroId);
         }
     }
 }

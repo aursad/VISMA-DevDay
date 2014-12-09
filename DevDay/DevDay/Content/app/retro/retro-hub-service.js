@@ -12,6 +12,7 @@
             // Listen to the 'BoardUpdated' event that will be pushed from SignalR server
             this.proxy.on('BoardUpdated', function() {
                 $rootScope.$emit("refreshBoard");
+                console.log("refreshBoard");
             });
 
             this.proxy.on('NewMember', function() {

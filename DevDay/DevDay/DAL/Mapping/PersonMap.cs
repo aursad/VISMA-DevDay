@@ -17,6 +17,7 @@ namespace DevDay.DAL.Mapping
 
             // Properties
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(t => t.PersonGuid).IsRequired();
             Property(t => t.Name).IsRequired().HasMaxLength(55);
 
             // Table and column Mappings

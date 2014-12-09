@@ -15,10 +15,11 @@
 
         $scope.joinGame = function() {
             console.log($scope.name);
-            retroGame.save({}, $scope.name, function(success) {
-                console.log("Hub id: " + success);
+            retroGame.save({}, { "name": $scope.name }, function (success) {
+                console.log("Hub id: " + success.id);
+                $state.go("retro-game", { id: success.id });
             });
-            $state.go("retro-game");
+            
         };
 
         var onError = function (errorMessage) {

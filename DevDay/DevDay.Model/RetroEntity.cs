@@ -16,7 +16,7 @@ namespace DevDay.Model
         public int PersonId { get; set; }
 
         //Properties
-        public string Name { get; set; }
+        public Guid Name { get; set; }
         public DateTime CreateTime { get; set; }
         public RetroTypeEnum RetroType { get; set; }
 

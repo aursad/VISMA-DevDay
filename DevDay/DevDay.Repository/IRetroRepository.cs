@@ -10,6 +10,6 @@ namespace DevDay.Repository
     public interface IRetroRepository : IGenericRepository<RetroEntity>
     {
         IEnumerable<RetroEntity> FindAll();
-        RetroEntity Find(int retroId);
+        RetroEntity Find(Guid retroId);
     }
 }

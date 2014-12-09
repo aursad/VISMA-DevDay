@@ -19,7 +19,7 @@ namespace DevDay.Service.Retro
       }
 
 
-      public RetroEntity GetById(int id)
+      public RetroEntity GetById(Guid id)
       {
           return _retroRepository.Find(id);
       }

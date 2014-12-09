@@ -34,21 +34,15 @@
     <div class="container">
         @RenderBody()
     </div>
-
+    
     <script src="~/Content/scripts/jquery-2.1.1.js"></script>
+    <script src="~/Content/scripts/bootstrap.js"></script>
     <script src="~/Content/scripts/angular/angular.js"></script>
     <script src="~/Content/scripts/angular-ui/angular-ui-router.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-resource.js"></script>
     <script src="~/Content/scripts/jquery.signalR-2.1.2.js"></script>
     <script src="~/Content/scripts/ie10-viewport-bug-workaround.js"></script>
     
-    <script src="~/Content/app/retro/module.js"></script>
-    <script src="~/Content/app/common/module.js"></script>
-    <script src="~/Content/app/retro/config.js"></script>
-    <script src="~/Content/app/common/spa-route-service.js"></script>
-    <script src="~/Content/app/retro/retro-hub-service.js"></script>
-    <script src="~/Content/app/retro/retro-game-resource.js"></script>
-    <script src="~/Content/app/retro/retro-game-controller.js"></script>
-    <script src="~/Content/app/retro/retro-game-join-controller.js"></script>
+    @RenderSection("Javascript")
 </body>
 </html>

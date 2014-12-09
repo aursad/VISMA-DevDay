@@ -16,7 +16,7 @@ namespace DevDay.DAL
             : base("DevDayContext")
         {
             Configuration.ProxyCreationEnabled = false; 
-            Database.SetInitializer(new DropCreateDatabaseAlways<DevDayContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DevDayContext>());
         }
 
         public DbSet<RetroEntity> Retros { get; set; }

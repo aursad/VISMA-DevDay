@@ -37,7 +37,7 @@
                 templateUrl: "game-join-template"
             })
             .state('retro-game', {
-                url: '/retro/game',
+                url: '/retro/:id',
                 controller: "boardCtrl",
                 templateUrl: "game-template"
             });

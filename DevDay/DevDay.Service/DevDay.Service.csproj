@@ -53,8 +53,10 @@
     <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retro\IPersonService.cs" />
+    <Compile Include="Retro\IMessageService.cs" />
     <Compile Include="Retro\IRetroService.cs" />
     <Compile Include="Retro\PersonService.cs" />
+    <Compile Include="Retro\MessageService.cs" />
     <Compile Include="Retro\RetroService.cs" />
   </ItemGroup>
   <ItemGroup>

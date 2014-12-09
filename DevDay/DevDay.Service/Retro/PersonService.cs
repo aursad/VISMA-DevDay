@@ -28,5 +28,9 @@ namespace DevDay.Service.Retro
       {
           return _personRepository.GetAll();
       }
+      public IEnumerable<PersonEntity> GetRetroPersons(Guid idRetro)
+      {
+          return _personRepository.GetAllByRetro(idRetro);
+      }
   }
 }

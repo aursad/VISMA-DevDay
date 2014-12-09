@@ -4,11 +4,9 @@
     'use strict';
 
     ng.module('devday.retro')
-        .factory('retroGame', [
+        .factory('messageResource', [
             '$resource', function ($resource) {
-                return $resource('/api/Retro/:id', { id: "@id" }, {
-                    update: { method: 'PUT' }
-                });
+                return $resource('/api/Message/:id', { id: "@id" }, {});
             }
         ]);
 })(angular)

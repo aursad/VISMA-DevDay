@@ -20,9 +20,9 @@ namespace DevDay.Repository
             return _entities.Set<RetroEntity>().AsEnumerable();
         }
 
-        public RetroEntity Find(int retroId)
+        public RetroEntity Find(Guid retroId)
         {
-            return _dbset.FirstOrDefault(x => x.Id == retroId);
+            return _dbset.FirstOrDefault(x => x.Name == retroId);
         }
     }
 }
